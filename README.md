@@ -13,7 +13,7 @@ JUPYTER CONSUMER:
 file NYT12RecsReadnWrite3.ipynb has the detailed print statements of how the processing happens for first 12 messages successfully.
 Make sure YOU CAREFULLY LOOK AT print statement supression before running OR U'LL CRASH YOUR SYSTEM for the full data.
 
-PROBLEM FOUND with the way the first 24 hours was read. Simply reading first 316569 messages (discarding the first two as header and blank info) has inserted 316567 docs into mongo. But the dates are outside the PUTime of gte=2018-06-01 00:00:00 and lt=2018-06-02 00:00:00. Only 316188 docs meet this condition. Will need to change consumer to check the date range before proceeding to insert (readability below is bad but will try to upload a screenshot image DateCheckb4InsertReq-20190101.jpg)
+PROBLEM FOUND with the way the first 24 hours was read. Simply reading first 316569 messages (discarding the first two as header and blank info) has inserted 316567 docs into mongo. But the dates are outside the PUTime of gte=2018-06-01 00:00:00 and lt=2018-06-02 00:00:00. Only 316188 docs meet this condition. Will need to change consumer to check the date range before proceeding to insert (readability below is bad but see screenshot image DateCheckb4InsertReq-20190101.jpg)
 
 
 > db.TestNYTFullJuneButOnly24hrsCol1.count()
